@@ -1,0 +1,35 @@
+li.toolCard{
+    background-color: #fff;
+    box-shadow: 0 0 14px 0 rgba(0,0,0,0.1);
+    border-radius: 2px;
+    padding: 20px;
+    margin: 20px 0px;
+    min-width: 300px;
+}
+
+.remove{
+    float: right;
+    cursor: pointer;
+}
+.remove:hover{
+    font-size: 20px;
+    color: red;
+    -webkit-user-select: none;
+}
+
+li.toolCard a{
+    cursor: alias;
+    text-decoration: none;
+}
+li.toolCard a:hover{
+    text-decoration: underline;
+}
+
+
+li.toolCard p{
+    margin: 10px 0px;
+}
+
+li.toolCard strong{
+    font-size: .8em;
+}

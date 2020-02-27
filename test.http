@@ -1,0 +1,71 @@
+###busca todas ferramentas
+
+GET http://localhost:3001/tools
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJWVVRUUiIsInN1YiI6IjVlNGY3NmI2Njk1ZjUzNDIwODQ5NDNiNyIsImlhdCI6MTU4MjI2NjA0MH0.u3TxgrW66LHK9ewytqd5a0nIKbpGyLv68-JZ5Ts6DHk
+
+### busca ferramentas pela query global
+
+GET http://localhost:3001/tools
+    ?global=
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJWVVRUUiIsInN1YiI6IjVlNGY3NmI2Njk1ZjUzNDIwODQ5NDNiNyIsImlhdCI6MTU4MjI2NjA0MH0.u3TxgrW66LHK9ewytqd5a0nIKbpGyLv68-JZ5Ts6DHk
+
+### busca ferramentas pela query tag
+
+GET http://localhost:3000/tools
+    ?tag=Node
+
+### add ferramenta
+
+POST http://localhost:3001/tools
+content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJWVVRUUiIsInN1YiI6IjVlNGY3NmI2Njk1ZjUzNDIwODQ5NDNiNyIsImlhdCI6MTU4MjI2NjA0MH0.u3TxgrW66LHK9ewytqd5a0nIKbpGyLv68-JZ5Ts6DHk
+
+
+{
+    "title": "Figura",
+    "link": "https://github.com/typicode/hotel",
+    "description": "Local app manager. Start apps within your browser, developer tool with local .localhost domain and https out of the box.",
+    "tags": [
+        "node",
+        "organizing",
+        "webapps",
+        "domain",
+        "developer",
+        "https",
+        "proxy"
+    ]
+}
+
+### remove ferramenta
+
+DELETE http://localhost:3000/tools/5e4f5405e1bed453509ad434
+
+
+
+
+
+### post user
+
+POST http://localhost:3001/user/cadastrar
+content-type: application/json
+
+{
+    "firstName": "Alfredo",
+    "lastName": "Neto",
+    "login": "root",
+    "password": "123456"
+}
+
+### Logar
+POST http://localhost:3001/user/logar
+content-type: application/json
+
+{
+    "login": "root",
+    "password": "123456"
+}
+
+
+### deletar usuario
+DELETE http://localhost:3001/user/5e4f6c4982cc480c14e303fb
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJWVVRUUiIsInN1YiI6IjVlNGY3NmI2Njk1ZjUzNDIwODQ5NDNiNyIsImlhdCI6MTU4MjI2NjA0MH0.u3TxgrW66LHK9ewytqd5a0nIKbpGyLv68-JZ5Ts6DHk
