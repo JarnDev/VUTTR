@@ -1,0 +1,39 @@
+.loginContainer{
+    width: 100vw;
+    height: 100vh;
+    min-width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(78, 71, 64, 0.164);
+}
+
+.loginForm{
+    width: 30em;
+    display: flex;
+    flex-direction: column;
+}
+
+
+#login{
+    padding-left: 1em;
+    margin: 5px 0px;
+    height: 2em;
+    border: none;
+    border-bottom: solid black 1px;
+}
+
+#password{
+    padding-left: 1em;
+    margin: 5px 0px;
+    height: 2em;
+    border: none;
+    border-bottom: solid black 1px;
+}
+
+#submitButton{
+    border-radius: 20px;
+    background-color: rgb(136, 135, 105);
+    color: #fff;
+    height: 2em;
+}

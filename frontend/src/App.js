@@ -2,8 +2,7 @@ import React from 'react';
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 
 import './App.css';
@@ -13,14 +12,12 @@ function App() {
   return (
     <Router>
       <Switch>
-        
-        <Route exact path="/" component={Login}/>
+
+        <Route exact path="/" component={Login} />
         <Route path="/toolview" component={ToolView} />
 
       </Switch>
     </Router>
-    
-    
   );
 }
 

@@ -7,6 +7,11 @@ li.toolCard{
     min-width: 300px;
 }
 
+li.toolCard:hover{
+    background-color: rgba(211, 207, 207, 0.082);
+}
+
+
 .remove{
     float: right;
     cursor: pointer;
@@ -20,6 +25,8 @@ li.toolCard{
 li.toolCard a{
     cursor: alias;
     text-decoration: none;
+    color: black;
+    font-size: 18px;
 }
 li.toolCard a:hover{
     text-decoration: underline;

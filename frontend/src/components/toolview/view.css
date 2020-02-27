@@ -3,7 +3,56 @@ ul{
 }
 
 .container{
-    width: 70vw;
+    width: 60vw;
     margin: auto;
-    min-width: 300px;
+    min-width: 400px;
+    padding: 10px 10px 10px 10px;
 }
+
+#searchInput{
+    margin: 10px 10px 10px 0px;
+    height: 25px;
+    border-radius: 2px;
+    padding-left: 1em;
+}
+
+#searchByTag{
+  position: relative;
+  top: 8px;
+  height: 25px;
+  width: 25px;
+  margin-right: 10px;
+}
+
+label{
+    -webkit-user-select: none;
+    color: rgb(180, 175, 175);
+}
+.searchForm{
+    display: inline-block;
+}
+.addButton{
+    width: 50px;
+    height: 30px;
+    border-radius: 2px;
+    background-color: rgb(136, 135, 105);
+    border-color: rgb(136, 135, 105);
+    color: #fff;
+    float: right;
+    margin: 10px 0px 0px 0px;
+}
+
+.addButton:hover{
+    box-shadow: 0px 11px 10px 0px rgba(0,0,0,0.75);
+    cursor: pointer;
+}
+
+.header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 10px;
+}
+
+

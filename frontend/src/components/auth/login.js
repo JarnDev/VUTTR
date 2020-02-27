@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import backend from "../../services/backend_api";
-import {Redirect} from "react-router-dom"
+import { Redirect } from "react-router-dom"
+import './login.css'
 export default class Login extends Component {
   constructor(props) {
     super(props);
@@ -24,21 +25,18 @@ export default class Login extends Component {
 
   handleSubmit(event) {
     const { login, password } = this.state;
-    if (('indexedDB' in window)) {
-        console.log('This browser does support IndexedDB');
-      }
+
     backend
       .post(
         "/user/logar",
         {
-            login: login,
-            password: password
+          login: login,
+          password: password
         }
       )
       .then(response => {
-        console.log(`API: ${JSON.stringify(response.data)}`)
         sessionStorage.setItem('token', response.data.token)
-        this.setState({"logedIn":true})
+        this.setState({ "logedIn": true })
       })
       .catch(error => {
         console.log("login error", error);
@@ -47,13 +45,14 @@ export default class Login extends Component {
   }
 
   render() {
-    if(this.state.logedIn){
-      return <Redirect to='/toolview'/>
+    if (this.state.logedIn) {
+      return <Redirect to='/toolview' />
     }
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
+      <div className='loginContainer'>
+        <form onSubmit={this.handleSubmit} className='loginForm'>
           <input
+            id="login"
             type="text"
             name="login"
             placeholder="login"
@@ -63,15 +62,16 @@ export default class Login extends Component {
           />
 
           <input
+            id="password"
             type="password"
             name="password"
-            placeholder="Password"
+            placeholder="senha"
             value={this.state.password}
             onChange={this.handleChange}
             required
           />
 
-          <button type="submit">Logar</button>
+          <button id="submitButton" type="submit">Logar</button>
         </form>
       </div>
     );
