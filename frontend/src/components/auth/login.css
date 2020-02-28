@@ -1,15 +1,15 @@
 .loginContainer{
     width: 100vw;
     height: 100vh;
-    min-width: 300px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     background: #F5F4F6 0% 0% no-repeat padding-box;
 }
 
 .loginForm{
-    width: 30em;
+    /* max-width: 30em; */
     display: flex;
     flex-direction: column;
 }
@@ -17,7 +17,7 @@
 
 #login{
     padding-left: 1em;
-    margin: 5px 0px;
+    margin: 10px 0px;
     height: 2em;
     padding-left: 50px;
     border: none;
@@ -30,7 +30,7 @@
 #password{
     /* /* padding-left: 1em; */
     border: none;
-    margin: 5px 0px;
+    margin: 10px 0px;
     height: 2em;
     padding-left: 50px;
     border-bottom: solid black 1px; 
@@ -57,4 +57,28 @@
 
 #submitButton:hover{
     background: #10B26C 0% 0% no-repeat padding-box;
+}
+
+.loginContainer h1{
+    letter-spacing: 0.84px;
+    color: #170C3A;
+    opacity: 1;
+    margin-bottom: 20px;
+}
+
+.loginContainer h3{
+    letter-spacing: 0.6px;
+    color: #170C3A;
+    opacity: 1;
+    margin-bottom: 20px;
+}
+
+.errorDiv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.errorLogin{
+    color: red;
 }

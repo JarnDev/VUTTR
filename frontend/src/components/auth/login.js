@@ -10,6 +10,7 @@ export default class Login extends Component {
       login: "",
       password: "",
       logedIn: false,
+      loginError: null
 
     };
 
@@ -40,6 +41,13 @@ export default class Login extends Component {
       })
       .catch(error => {
         console.log("login error", error);
+        this.setState({
+          "loginError": (
+            <div className="errorDiv">
+              <span className="errorLogin">Wrong User or Password!</span>
+            </div>
+          )
+        })
       });
     event.preventDefault();
   }
@@ -50,6 +58,8 @@ export default class Login extends Component {
     }
     return (
       <div className='loginContainer'>
+        <h1>VUTTR</h1>
+        <h3>Very Useful Tools to Remember</h3>
         <form onSubmit={this.handleSubmit} className='loginForm'>
           <input
             id="login"
@@ -72,6 +82,7 @@ export default class Login extends Component {
           />
 
           <button id="submitButton" type="submit">Logar</button>
+          {this.state.loginError}
         </form>
       </div>
     );

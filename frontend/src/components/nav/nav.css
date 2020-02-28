@@ -1,0 +1,73 @@
+.navBar{
+    position: absolute;
+    padding: 25px;
+    width: 100vw;
+    height: 80px;
+    top: 0;
+    left: 0;
+    background-color: #FFFFFF;
+    border-bottom: 2px solid rgba(157, 157, 175, 0.452);
+    min-width: 360px;
+}
+
+.pageName{
+    position: absolute;
+    left: 120px;
+    top: 30px;
+    text-align: left;
+    font-weight: bold;
+    letter-spacing: 0.52px;
+    color: #170C3A;
+    opacity: 1;
+}
+
+
+.logoImgDiv{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    height: 80px;
+    border-right: 2px solid rgba(157, 157, 175, 0.452);
+}
+.logoImg{
+    width: 50%;
+    height: 50%;
+    
+}
+
+.userBar{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.userBar .userImg{
+    width: 30px;
+    height: 30px;
+    margin: 0px 10px;
+    border-radius: 50%;
+}
+
+.userBar .statusImg{
+    width: 25px;
+    height: 30px;
+    margin: 0px 10px;
+}
+
+.userBar span{
+    margin-top: 4px;
+}
+
+.userBar .statusImg:hover{
+    content: url('../../assets/img/Icon-Locked-2px.png');
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 820px){
+    .pageName{
+        left: 90px;
+    }
+}

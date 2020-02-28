@@ -1,31 +1,12 @@
 ul{
     list-style: none;
 }
-.userBar .userImg{
-    width: 20px;
-    height: 20px;
-    margin: 0px 10px;
-}
-
-.userBar .statusImg{
-    float: right;
-    width: 15px;
-    height: 20px;
-    margin: 0px 10px;
-}
-
-.userBar .statusImg:hover{
-    content: url('../../assets/img/Icon-Locked-2px.png');
-    cursor: pointer;
-    
-    
-}
 
 .container{
     width: 60vw;
     margin: auto;
-    min-width: 500px;
-    padding: 10px 10px 10px 10px;
+    min-width: 360px;
+    padding: 100px 10px 10px 10px;
 }
 
 #searchInput{
@@ -62,7 +43,6 @@ label{
     float: right;
     border:0;
     margin: 10px 0px 0px 0px;
-    font: Semibold 18px/24px Source Sans Pro;
     letter-spacing: 0.36px;
     color: #FFFFFF;
     background: #365DF0 0% 0% no-repeat padding-box;
@@ -74,28 +54,6 @@ label{
 .addButton:hover{
     background: #2F55CC 0% 0% no-repeat padding-box;
     cursor: pointer;
-}
-
-.header{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding-bottom: 30px;
-}
-
-.header h1{
-    font: Semibold 42px/50px Source Sans Pro;
-    letter-spacing: 0.84px;
-    color: #170C3A;
-    opacity: 1;
-}
-
-.header h3{
-    font: Semibold 30px/36px Source Sans Pro;
-    letter-spacing: 0.6px;
-    color: #170C3A;
-    opacity: 1;
 }
 
 /* Toggle css */
@@ -154,5 +112,24 @@ border-radius: 28px;
 }
 
 .slider.round:before {
-border-radius: 50%;
+    border-radius: 50%;
+}
+
+@media only screen and (max-width: 820px){
+    #tagLabel{
+        display: none;
+    }
+    .addButton{
+        position: relative;
+        right: 10px;
+    }
+    #searchInput{
+        position: relative;
+        top: 25px;
+        width: 250px;
+        margin-right: 35px;
+    }
+    ul{
+        margin-top: 60px;
+    }
 }

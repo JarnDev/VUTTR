@@ -8,17 +8,16 @@ export default class Modal extends Component {
             return null;
         }
         var modalButton = null
-        console.log(this.props.modalButton)
-        if(this.props.modalButton){
-            modalButton = 
-                    (<div className="actions">
-                        <button className="primary-button" onClick={this.props.onConfirm}>
-                            {this.props.confirmText}
-                        </button>
-                    </div>)
-                
-            }
-        
+        if (this.props.modalButton) {
+            modalButton =
+                (<div className="actions">
+                    <button className="primary-button" onClick={this.props.onConfirm}>
+                        {this.props.confirmText}
+                    </button>
+                </div>)
+
+        }
+
 
         return (
             <div className="backDrop">

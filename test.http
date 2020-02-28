@@ -50,10 +50,11 @@ POST http://localhost:3001/user/cadastrar
 content-type: application/json
 
 {
-    "firstName": "Alfredo",
+    "firstName": "jarn40",
     "lastName": "Neto",
-    "login": "root",
-    "password": "123456"
+    "login": "jarn40",
+    "password": "123",
+    "avatar": "https://avatars1.githubusercontent.com/u/20113585?s=460&v=4"
 }
 
 ### Logar
