@@ -20,7 +20,7 @@ export default class ToolView extends Component {
       modalTool: null
     };
     this.handleChange = this.handleChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
+    this.getTools = this.getTools.bind(this)
     this.removeWarnModalToggle = this.removeWarnModalToggle.bind(this)
     this.addToolModalToggle = this.addToolModalToggle.bind(this)
     this.setModalTool = this.setModalTool.bind(this)
@@ -40,7 +40,7 @@ export default class ToolView extends Component {
     })
   };
 
-  async handleSubmit() {
+  async getTools() {
     if (this.state.searchByTag) {
       var backend_response = await backend('/tools', {
         headers: { Authorization: sessionStorage.getItem('token') },
@@ -67,7 +67,7 @@ export default class ToolView extends Component {
       });
     }
 
-    await this.handleSubmit()
+    await this.getTools()
 
   }
 
