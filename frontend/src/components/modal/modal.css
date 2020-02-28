@@ -10,22 +10,15 @@
 }
 
 .modal {
-width: 500px;
-background: white;
-border: 1px solid #ccc;
-transition: 1.1s ease-out;
-box-shadow: 
-  -2rem 2rem 2rem rgba(black, 0.2);
-filter: blur(0);
-transform: scale(1);  
-opacity: 1;
-visibility: visible;
-
+  width: 500px;
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  box-shadow: 0px 20px 25px #0000001A;
+  border-radius: 5px;
+  opacity: 1;
 }
 
 h2 {
-  border-bottom: 1px solid #ccc;
-  padding: 1rem;
+  padding: 0 0 0 1rem;
   margin: 0;
 }
 .content {
@@ -33,26 +26,38 @@ h2 {
 }
 
 .actions {
-  border-top: 1px solid #ccc;
-  background: #eee;
-  padding: 0.5rem 1rem;
+  padding: 0 1rem 1rem 1rem;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-end;
+  align-items: right;
 }
-.modal button {
-  border: 0;
-  background: #78f89f;
-  border-radius: 5px;
+
+.modal .primary-button {
+  border: none;
+  background: #F95E5A 0% 0% no-repeat padding-box;
   padding: 0.5rem 1rem;
   font-size: 0.8rem;
+  border-radius: 5px;
   line-height: 1;
+  opacity: 1;
+
+  text-align: center;
+  font: Semibold 18px/24px Source Sans Pro;
+  letter-spacing: 0.36px;
+  color: #FFFFFF;
 }
-.modal button:hover {
-  background: #45a361;
+
+.modal .primary-button:hover {
+  background: #CC4C4C 0% 0% no-repeat padding-box;
   cursor: pointer;
 }
 
-.confirm{
-  float: right;
+.modal span{
+  position: relative;
+  right: -480px;
+  color: #8F8A9B;
+}
+.modal span:hover{
+  cursor: pointer;
+  color: #000;
 }

@@ -7,16 +7,26 @@ export default class Modal extends Component {
         if (!this.props.show) {
             return null;
         }
+        var modalButton = null
+        console.log(this.props.modalButton)
+        if(this.props.modalButton){
+            modalButton = 
+                    (<div className="actions">
+                        <button className="primary-button" onClick={this.props.onConfirm}>
+                            {this.props.confirmText}
+                        </button>
+                    </div>)
+                
+            }
+        
+
         return (
             <div className="backDrop">
                 <div className="modal" id="modal">
+                    <span onClick={this.props.onClose}>x</span>
                     <h2>{this.props.title}</h2>
                     <div className="content">{this.props.children}</div>
-                    <div className="actions">
-                        <button className="toggle-button" onClick={this.props.onClose}>
-                            Cancel
-                        </button>
-                    </div>
+                    {modalButton}
                 </div>
             </div>
         )

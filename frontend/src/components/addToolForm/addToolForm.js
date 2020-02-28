@@ -58,8 +58,9 @@ export default class AddToolForm extends Component {
                     <input type="text" name="tags" id="tags" onChange={this.changeHandler} required />
 
                 </div>
-
-                <button id="submitButton" type="submit">Add Tool</button>
+                <div className="submitButtonClass">
+                    <button id="submitButton" type="submit">Add Tool</button>
+                </div>
             </form>
         )
     }

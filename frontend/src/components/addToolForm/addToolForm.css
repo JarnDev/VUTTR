@@ -8,11 +8,22 @@
     flex-direction: column;
 }
 
-.toolForm button{
+.toolForm #submitButton{
+    border: 0;
     margin-top: 10px;
+    margin-right: 10px;
+    background: #0DCB7D 0% 0% no-repeat padding-box;
+    border-radius: 5px;
+    text-align: center;
+    font: Semibold 18px/24px Source Sans Pro;
+    letter-spacing: 0.36px;
+    color: #FFFFFF;
+    padding: 0px 20px;
+    opacity: 1;
 }
-.toolForm button:hover{
-    box-shadow: 0px 11px 10px 0px rgba(0,0,0,0.75);
+.toolForm #submitButton:hover{
+    background: #10B26C 0% 0% no-repeat padding-box;
+    cursor: pointer;
 }
 
 .toolForm .inputField input[type=text]{
@@ -25,4 +36,9 @@
 
 .toolForm .inputField label{
     color: #000;
+}
+
+.submitButtonClass{
+    display: flex;
+    justify-content: flex-end;
 }

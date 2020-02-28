@@ -28,6 +28,13 @@ class UserControlador {
       }
   }
 
+  getOne(){
+    return async (req, res) => {
+      const { id } = req.params;
+      const user = await User.findById(id)
+      return res.json(user)
+    }
+  }
 
   cadastrar(){
     return async (req, res) =>{

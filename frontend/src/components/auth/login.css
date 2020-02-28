@@ -5,7 +5,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgba(78, 71, 64, 0.164);
+    background: #F5F4F6 0% 0% no-repeat padding-box;
 }
 
 .loginForm{
@@ -19,21 +19,42 @@
     padding-left: 1em;
     margin: 5px 0px;
     height: 2em;
+    padding-left: 50px;
     border: none;
-    border-bottom: solid black 1px;
+    border-bottom: solid black 1px; 
+    border-radius: 2px;
+    opacity: 1;
+    background: transparent url('../../assets/img/Icon-User-2px.png') 10px 50%/20px 20px no-repeat padding-box;
 }
 
 #password{
-    padding-left: 1em;
+    /* /* padding-left: 1em; */
+    border: none;
     margin: 5px 0px;
     height: 2em;
-    border: none;
-    border-bottom: solid black 1px;
+    padding-left: 50px;
+    border-bottom: solid black 1px; 
+    border-radius: 2px;
+    opacity: 1;
+    background: transparent url('../../assets/img/Icon-Key-2px.png') 10px 50%/20px 20px no-repeat padding-box;
 }
 
 #submitButton{
-    border-radius: 20px;
-    background-color: rgb(136, 135, 105);
-    color: #fff;
     height: 2em;
+    float: right;
+    border:0;
+    margin: 10px 0px 0px 0px;
+    text-align: center;
+    font: Semibold 18px/24px Source Sans Pro;
+    letter-spacing: 0.36px;
+    color: #FFF;
+    background: #0DCB7D 0% 0% no-repeat padding-box;
+    border-radius: 5px;
+    cursor: pointer;
+    opacity: 1;
+
+}
+
+#submitButton:hover{
+    background: #10B26C 0% 0% no-repeat padding-box;
 }

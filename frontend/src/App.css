@@ -3,4 +3,10 @@
   padding: 0;
   outline: 0;
   box-sizing: border-box;
+  font: Regular 20px/26px Source Sans Pro;
+  letter-spacing: 0.4px;
+  color: #170C3A;
+}
+body{
+  background: #FCFCFD 0% 0% no-repeat padding-box;
 }

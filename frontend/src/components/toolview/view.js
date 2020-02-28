@@ -5,7 +5,8 @@ import { Redirect } from "react-router-dom"
 import './view.css'
 import Modal from "../modal/modal";
 import AddToolForm from "../addToolForm/addToolForm"
-
+import {decoder} from '../../utils/jwtDecoder'
+import _ from 'underscore'
 export default class ToolView extends Component {
   constructor(props) {
     super(props);
@@ -24,13 +25,17 @@ export default class ToolView extends Component {
     this.setModalTool = this.setModalTool.bind(this)
     this.removeItem = this.removeItem.bind(this)
     this.handleAddSubmit = this.handleAddSubmit.bind(this)
+    this.logOut = this.logOut.bind(this)
+    this.handleChangeDebounced = this.handleChangeDebounced.bind(this)
+    this.debouncedSearchTerm = _.debounce(this.handleChange,500)
   }
 
   async componentDidMount() {
-
     const backend_response = await backend('/tools', { headers: { Authorization: sessionStorage.getItem('token') } })
-    this.setState({ tools: backend_response.data })
-
+    const user = await decoder()
+    this.setState({ tools: backend_response.data,
+                    user:user
+                })
   };
 
   async handleSubmit(event) {
@@ -51,6 +56,7 @@ export default class ToolView extends Component {
   }
 
   handleChange(event) {
+    console.log(event)
     if (event.target.name === 'searchByTag') {
       this.setState({
         [event.target.name]: !this.state.searchByTag
@@ -62,6 +68,10 @@ export default class ToolView extends Component {
     }
   }
 
+  handleChangeDebounced(event){
+    event.persist()
+    this.debouncedSearchTerm(event)
+  }
 
 
   addToolModalToggle() {
@@ -99,34 +109,56 @@ export default class ToolView extends Component {
     this.removeWarnModalToggle()
   }
 
+  logOut(){
+      sessionStorage.clear()
+      this.setState({
+          user:''
+      })
+  }
+
   render() {
     if (!sessionStorage.getItem('token')) {
       return <Redirect to='/' />
     }
     var modal = null;
     if (this.state.removeWarnModal) {
-      modal = <Modal title={`${'\u2718'} Remove Tool`} onClose={this.removeWarnModalToggle} show={this.state.removeWarnModal}>Are you sure you want to remove {this.state.modalTool.title}?<button className="confirm" onClick={this.removeItem}>Yes, Remove</button></Modal>
+      modal = <Modal title={`${'\u2718'} Remove Tool`} modalButton={true} confirmText='Yes, remove' onConfirm={this.removeItem} onClose={this.removeWarnModalToggle} show={this.state.removeWarnModal}>Are you sure you want to remove {this.state.modalTool.title}?</Modal>
     } else if (this.state.addToolModal) {
       modal = <Modal title=' + Add new tool' onClose={this.addToolModalToggle} show={this.state.addToolModal}><AddToolForm onSubmit={this.handleAddSubmit} /></Modal>
     }
-
+    var userBar = null
+    if (this.state.user){
+        userBar = (
+            <div className="userBar">
+                <img className="userImg" alt="" src={require('../../assets/img/Icon-User-2px.png')}/>
+                <span>{this.state.user.firstName}</span>
+                <img onClick={this.logOut} className="statusImg" alt="" src={require('../../assets/img/Icon-Unlocked-2px.png')}/>
+            </div>
+            )
+    }
 
     return (
       <>
         {modal}
         < div className='container' >
+          {userBar}
           <div className='header'>
             <h1>VUTTR</h1>
             <h3>Very Useful Tools to Remember</h3>
           </div>
           <div className='searchForm'>
             <form onSubmit={this.handleSubmit}>
-              <input id='searchInput' type="text" placeholder='search' name='search' onChange={this.handleChange} />
-              <input
+              <input id='searchInput' type="text" placeholder='search' name='search' onChange={this.handleChangeDebounced} />
+              <label className="switch">
+                <input name="searchByTag" onChange={this.handleChangeDebounced} type="checkbox"/>
+                <span className="slider round"></span>
+              </label>
+              {/* <input
                 name="searchByTag"
                 id="searchByTag"
                 type="checkbox"
-                onChange={this.handleChange} />
+                onChange={this.handleChange}/> */}
+
               <label htmlFor='searchByTag'>
                 tags only
                     </label>

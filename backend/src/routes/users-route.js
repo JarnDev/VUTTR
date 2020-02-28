@@ -12,7 +12,10 @@ const jwtPassport = passport.authenticate('jwt', { session: false });
 
 router.post(userRotas.cadastrar, userControlador.cadastrar())
 router.post(userRotas.logar, localPassport, userControlador.logar())
-router.delete(userRotas.userId, jwtPassport, userControlador.remover())
+router.route(userRotas.userId)
+    .all(jwtPassport)
+    .get(userControlador.getOne())
+    .delete(userControlador.remover())
 
 
 module.exports = router
