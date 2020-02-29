@@ -13,12 +13,6 @@ Para que os projetos (backend e frontend) funcionem corretamente siga esse passo
         {
             "atlas_uri": "URI para conecção do MONGODB"
         }     
-
-    frontend/src/config/private.js
-
-        export const environment = {
-            API_URL: "http://localhost:3001" << ALTERE PARA O LINK DO SEU BACKEND SE HOUVE ALTERAÇÃO
-        }
       
 3.  Instalar dependencias
 
