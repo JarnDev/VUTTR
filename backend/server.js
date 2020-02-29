@@ -1,5 +1,5 @@
 const app = require('./src/config/custom-express');
-
-app.listen(process.env.PORT || 3001, () =>{
-    console.log("Server active at http://localhost:3000")
+const port = 3001
+app.listen(process.env.PORT || port, () =>{
+    console.log(`Server active at http://localhost:${port}`)
 })
