@@ -6,7 +6,7 @@ Para que os projetos (backend e frontend) funcionem corretamente siga esse passo
       
 2.  Criar arquivos privados de configuração
 
-    backend/config/private.json
+    backend/src/config/private.json
 
         {
             "atlas_uri": "URI para conecção do MONGODB"
