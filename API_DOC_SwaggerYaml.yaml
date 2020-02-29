@@ -1,0 +1,505 @@
+swagger: '2.0'
+info:
+  version: '1.0'
+  title: VUTTR API
+  description: 'HOST: localhost:3001'
+  contact: {}
+host: www.example.com
+basePath: /
+schemes:
+- https
+consumes:
+- application/json
+produces:
+- application/json
+paths:
+  /user/logar:
+    post:
+      description: ''
+      summary: Login
+      tags:
+      - Users
+      operationId: Login
+      deprecated: false
+      produces:
+      - application/json
+      consumes:
+      - application/json
+      parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/Loginrequest'
+      responses:
+        202:
+          description: ''
+          schema:
+            $ref: '#/definitions/Loginresponse'
+          examples:
+            application/json:
+              token: token
+          headers: {}
+  /user/cadastrar:
+    post:
+      description: ''
+      summary: Cadastrar
+      tags:
+      - Users
+      operationId: Cadastrar
+      deprecated: false
+      produces:
+      - application/json
+      consumes:
+      - application/json
+      parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/Cadastrarrequest'
+      responses:
+        201:
+          description: ''
+          schema:
+            $ref: '#/definitions/Cadastrarresponse'
+          examples:
+            application/json:
+              firstName: Alfredo
+              lastName: Neto
+              login: jarn40
+              password: 123
+              avatar: https://avatars1.githubusercontent.com/u/20113585?s=460&v=4
+          headers: {}
+        400:
+          description: Error Message
+          schema: {}
+        403:
+          description: Usuário jarn40 já existe.
+          schema: {}
+  /user/{id}:
+    get:
+      description: ''
+      summary: Manipulaçao de Usuario específico_Cadastrar
+      tags:
+      - Users
+      operationId: ManipulaçaodeUsuarioespecífico_Cadastrar
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: id
+        in: path
+        required: true
+        type: string
+        description: Id da ferramenta
+      - name: Authorization
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        200:
+          description: ''
+          schema:
+            $ref: '#/definitions/Manipula%C3%A7aodeUsuarioespec%C3%ADfico_Cadastrarresponse'
+          examples:
+            application/json:
+              _id: 5e56a7c91575415d407ee4b6
+              firstName: Alfredo
+              lastName: Neto
+              avatar: ''
+              login: root
+              password: $2b$07$c5o5PkJ9ODndyDxw6Px03O/KzeQ15WpKCxQGFaIP96QmW7O37QYZe
+              createdAt: 2020-02-26T17:15:53.689Z
+              updatedAt: 2020-02-26T17:15:53.689Z
+              __v: 0
+          headers: {}
+        401:
+          description: Unauthorized
+          schema: {}
+      security: []
+    delete:
+      description: ''
+      summary: Deletar
+      tags:
+      - Users
+      operationId: Deletar
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: id
+        in: path
+        required: true
+        type: string
+        description: Id da ferramenta
+      - name: Authorization
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        200:
+          description: ''
+          headers: {}
+        400:
+          description: Error Message
+          schema: {}
+        401:
+          description: Unauthorized
+          schema: {}
+      security: []
+  /tools:
+    get:
+      description: ''
+      summary: Listar
+      tags:
+      - Tools
+      operationId: Listar
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: global
+        in: query
+        required: false
+        type: string
+        description: string para filtrar busca no banco pelos campos ( title, description, tags ), caso um dos campos contenha a string
+      - name: tag
+        in: query
+        required: false
+        type: string
+        description: string para filtra busca no banco pelo campo de tags, precisa ser match exato.
+      - name: Authorization
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        200:
+          description: ''
+          schema:
+            type: object
+          headers: {}
+        401:
+          description: Unauthorized
+          schema: {}
+      security: []
+    post:
+      description: >-
+        :::warning
+
+
+        #### <i class="fa fa-warning"></i> Cuidado
+
+
+        Com o método POST os parametros opicionais não devem ser enviados!!
+
+        :::
+      summary: Adicionar
+      tags:
+      - Tools
+      operationId: Adicionar
+      deprecated: false
+      produces:
+      - application/json
+      consumes:
+      - application/json
+      parameters:
+      - name: global
+        in: query
+        required: false
+        type: string
+        description: string para filtrar busca no banco pelos campos ( title, description, tags ), caso um dos campos contenha a string
+      - name: tag
+        in: query
+        required: false
+        type: string
+        description: string para filtra busca no banco pelo campo de tags, precisa ser match exato.
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: Authorization
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/Adicionarrequest'
+      responses:
+        201:
+          description: ''
+          schema:
+            $ref: '#/definitions/Adicionarresponse'
+          examples:
+            application/json:
+              tags:
+              - node
+              - organizing
+              - webapps
+              - domain
+              - developer
+              - https
+              - proxy
+              _id: 5e597c5e1a0af90a94e68582
+              title: Figura
+              link: https://github.com/typicode/hotel
+              avatar: https://avatars1.githubusercontent.com/u/20113585?s=460&v=4
+              description: Local app manager. Start apps within your browser, developer tool with local .localhost domain and https out of the box.
+              __v: 0
+          headers: {}
+        401:
+          description: Unauthorized
+          schema: {}
+      security: []
+  /tools/{id}:
+    delete:
+      description: ''
+      summary: Remover
+      tags:
+      - Tools
+      operationId: Remover
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: id
+        in: path
+        required: true
+        type: string
+        description: Id da ferramenta a ser removida
+      - name: Authorization
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        204:
+          description: ''
+          headers: {}
+        401:
+          description: Unauthorized
+          schema: {}
+      security: []
+definitions:
+  Loginrequest:
+    title: Loginrequest
+    type: object
+    properties:
+      login:
+        description: Ultimo Nome do usuario
+        example: jarn40
+        type: string
+      password:
+        description: Ultimo Nome do usuario
+        example: 123
+        type: string
+    required:
+    - login
+    - password
+  Loginresponse:
+    title: Loginresponse
+    example:
+      token: token
+    type: object
+    properties:
+      token:
+        type: string
+    required:
+    - token
+  Cadastrarrequest:
+    title: Cadastrarrequest
+    type: object
+    properties:
+      firstName:
+        description: Primeiro Nome do usuario
+        example: Alfredo
+        type: string
+      lastName:
+        description: Ultimo Nome do usuario
+        example: Neto
+        type: string
+      login:
+        description: Login do usuario
+        example: jarn40
+        type: string
+      password:
+        description: Senha do usuario
+        example: 123
+        type: string
+      avatar:
+        description: Link opcional de imagem hospedada em nuvem
+        example: https://avatars1.githubusercontent.com/u/20113585?s=460&v=4
+        type: string
+    required:
+    - firstName
+    - lastName
+    - login
+    - password
+  Cadastrarresponse:
+    title: Cadastrarresponse
+    example:
+      firstName: Alfredo
+      lastName: Neto
+      login: jarn40
+      password: 123
+      avatar: https://avatars1.githubusercontent.com/u/20113585?s=460&v=4
+    type: object
+    properties:
+      firstName:
+        type: string
+      lastName:
+        type: string
+      login:
+        type: string
+      password:
+        type: string
+      avatar:
+        type: string
+    required:
+    - firstName
+    - lastName
+    - login
+    - password
+    - avatar
+  ManipulaçaodeUsuarioespecífico_Cadastrarresponse:
+    title: ManipulaçaodeUsuarioespecífico_Cadastrarresponse
+    example:
+      _id: 5e56a7c91575415d407ee4b6
+      firstName: Alfredo
+      lastName: Neto
+      avatar: ''
+      login: root
+      password: $2b$07$c5o5PkJ9ODndyDxw6Px03O/KzeQ15WpKCxQGFaIP96QmW7O37QYZe
+      createdAt: 2020-02-26T17:15:53.689Z
+      updatedAt: 2020-02-26T17:15:53.689Z
+      __v: 0
+    type: object
+    properties:
+      _id:
+        type: string
+      firstName:
+        type: string
+      lastName:
+        type: string
+      avatar:
+        type: string
+      login:
+        type: string
+      password:
+        type: string
+      createdAt:
+        type: string
+      updatedAt:
+        type: string
+      __v:
+        type: integer
+        format: int32
+    required:
+    - _id
+    - firstName
+    - lastName
+    - avatar
+    - login
+    - password
+    - createdAt
+    - updatedAt
+    - __v
+  Adicionarrequest:
+    title: Adicionarrequest
+    type: object
+    properties:
+      title:
+        description: Titulo da Ferramenta
+        example: Hotel
+        type: string
+      link:
+        description: HTTP link da Ferramenta
+        example: https://github.com/typicode/hotel
+        type: string
+      description:
+        description: Breve Descrição da ferramenta
+        example: Local app manager. Start apps within your browser, developer tool with local .localhost domain and https out of the box.
+        type: string
+      tags:
+        description: Lista de tags relacionadas a ferramenta
+        type: array
+        items:
+          type: string
+      avatar:
+        description: Link da imagem hospedada em cloud
+        example: https://avatars1.githubusercontent.com/u/20113585?s=460&v=4
+        type: string
+    required:
+    - title
+    - link
+    - description
+    - tags
+  Adicionarresponse:
+    title: Adicionarresponse
+    example:
+      tags:
+      - node
+      - organizing
+      - webapps
+      - domain
+      - developer
+      - https
+      - proxy
+      _id: 5e597c5e1a0af90a94e68582
+      title: Figura
+      link: https://github.com/typicode/hotel
+      avatar: https://avatars1.githubusercontent.com/u/20113585?s=460&v=4
+      description: Local app manager. Start apps within your browser, developer tool with local .localhost domain and https out of the box.
+      __v: 0
+    type: object
+    properties:
+      tags:
+        type: array
+        items:
+          type: string
+      _id:
+        type: string
+      title:
+        type: string
+      link:
+        type: string
+      avatar:
+        type: string
+      description:
+        type: string
+      __v:
+        type: integer
+        format: int32
+    required:
+    - tags
+    - _id
+    - title
+    - link
+    - avatar
+    - description
+    - __v
+tags:
+- name: Users
+  description: ''
+- name: Tools
+  description: ''
