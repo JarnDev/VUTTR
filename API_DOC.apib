@@ -3,7 +3,16 @@ FORMAT: 1A
 # VUTTR API
 
 HOST: localhost:3001
+::: note
+#### <i class="fa fa-info"></i> Info
+Note que todas as rotas exceto Users[Login e Cadastro], é obrigatório o envio:
+    
+    + Headers
+    
+            Authorization:"token"
 
+Token é recebido pela rota de login        
+:::
 
 # Group Users
 
@@ -15,8 +24,8 @@ HOST: localhost:3001
 
     + Attributes
     
-        + login:jarn40(string,required) - Ultimo Nome do usuario
-        + password:123(string,required) - Ultimo Nome do usuario
+        + login:jarn40(string,required) - Login do usuario
+        + password:123(string,required) - Senha do usuario
         
 + Response 202 (application/json)
     
@@ -56,12 +65,13 @@ HOST: localhost:3001
 
         Usuário jarn40 já existe.
 
-## Manipulaçao de Usuario específico [/user/{id}]
+## Manipulaçao [/user/{id}]
 
 + Parameters
+
     + id:5e56a7c91575415d407ee4b6(string,required) - Id da ferramenta
 
-### Cadastrar [GET]
+### Buscar [GET]
 
 + Request
 
@@ -112,6 +122,7 @@ HOST: localhost:3001
 # Group Tools
 
 ## Ferramentas [/tools{?global,tag}]
+
 + Parameters
 
   + global(string, optional) - string para filtrar busca no banco pelos campos ( title, description, tags ), caso um dos campos contenha a string
@@ -119,7 +130,10 @@ HOST: localhost:3001
   + tag(string, optional) - string para filtra busca no banco pelo campo de tags, precisa ser match exato.
 
 ### Listar [GET]
-
+::: note
+#### <i class="fa fa-info"></i> Info
+Caso nenhum parametro seja enviado, a busca retornará sem filtros.
+:::
 + Request
 
   + Headers
@@ -232,7 +246,7 @@ Com o método POST os parametros opicionais não devem ser enviados!!
 
 ### Remover [DELETE]
       
-  + Request JSON
+  + Request
 
     + Headers
 

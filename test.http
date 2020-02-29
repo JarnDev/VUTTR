@@ -58,12 +58,12 @@ content-type: application/json
 }
 
 ### Logar
-POST http://localhost:3001/user/logar
+POST http://3.16.40.249:3001/user/logar
 content-type: application/json
 
 {
-    "login": "root",
-    "password": "123456"
+    "login": "jarn40",
+    "password": "123"
 }
 
 
