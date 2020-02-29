@@ -44,7 +44,7 @@ class UserControlador {
         return res.status(403).send(`Usuário ${doc.login} já existe.`);
       }
       await User.create(doc)
-        .then((resp) => res.status(201).json(`User ${resp.firstName} criado!`))
+        .then((resp) => res.status(201).json(doc))
         .catch((err) => {
           console.log(err.message);
           return res.status(400).send(err.message);

@@ -50,9 +50,9 @@ POST http://localhost:3001/user/cadastrar
 content-type: application/json
 
 {
-    "firstName": "jarn40",
+    "firstName": "jarn401",
     "lastName": "Neto",
-    "login": "jarn40",
+    "login": "jarn4012",
     "password": "123",
     "avatar": "https://avatars1.githubusercontent.com/u/20113585?s=460&v=4"
 }
@@ -71,6 +71,6 @@ content-type: application/json
 DELETE http://localhost:3001/user/5e56a7c91575415d407ee4b6
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJWVVRUUiIsInN1YiI6IjVlNGY3NmI2Njk1ZjUzNDIwODQ5NDNiNyIsImlhdCI6MTU4MjI2NjA0MH0.u3TxgrW66LHK9ewytqd5a0nIKbpGyLv68-JZ5Ts6DHk
 
-### deletar usuario
+### buscar usuario
 GET http://localhost:3001/user/5e56a7c91575415d407ee4b6
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJWVVRUUiIsInN1YiI6IjVlNTZhN2M5MTU3NTQxNWQ0MDdlZTRiNiIsImlhdCI6MTU4Mjg1OTg4MH0.HYfEl18jJFA3V3jE5XJkRxHrpj-qK-GjaWu5lhUzePw

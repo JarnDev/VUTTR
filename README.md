@@ -3,5 +3,5 @@ Very Useful Tools to Remember Project
 
 Antes de testar os endPoint documentados tenha certeza de configurar o ambiente corretamente, siga esse passo-a-passo: [Passo-a-passo config](config.md)
 
-Documentação da API: [APIDOC](TOOL_API_DOC.md)
+Documentação da API: [APIDOC](API_DOC.apib)
 
