@@ -5,3 +5,4 @@ Antes de testar os endPoint documentados tenha certeza de configurar o ambiente 
 
 Documentação da API: [APIDOC](API_DOC.md)
 
+SWAGGER DOC: [LINK](https://app.swaggerhub.com/apis/Jarn40/vuttr-api/1.0)
