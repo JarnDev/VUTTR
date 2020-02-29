@@ -1,4 +1,4 @@
-[< VOLTAR](API_DOC.md)
+[< VOLTAR](README.md)
 
 Para que os projetos (backend e frontend) funcionem corretamente siga esse passo a passo:
 
