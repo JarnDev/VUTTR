@@ -13,7 +13,26 @@ Para que os projetos (backend e frontend) funcionem corretamente siga esse passo
         {
             "atlas_uri": "URI para conecção do MONGODB"
         }     
-      
+    
+    backend/src/config/s3_config.json
+        
+        {
+          "aws_config":{
+            "accessKeyId": AWS_ACCESS_KEY,
+            "secretAccessKey": AWS_SECRET_KEY,
+            "region": AWS_REGION
+          },
+         "bucket": S3_BUCKET_NAME
+        }
+    
+    frontend/src/config/private.js
+    
+        export const environment = {
+
+            API_URL: 'http://localhost:3001'
+
+        }
+    
 3.  Instalar dependencias
 
     nas pastas Backend e Frontend
