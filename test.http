@@ -68,7 +68,7 @@ content-type: application/json
 
 
 ### deletar usuario
-DELETE http://localhost:3001/user/5e56a7c91575415d407ee4b6
+DELETE http://localhost:3001/user/5e5b0dcb14376823c41f01c9
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJWVVRUUiIsInN1YiI6IjVlNGY3NmI2Njk1ZjUzNDIwODQ5NDNiNyIsImlhdCI6MTU4MjI2NjA0MH0.u3TxgrW66LHK9ewytqd5a0nIKbpGyLv68-JZ5Ts6DHk
 
 ### buscar usuario

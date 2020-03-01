@@ -2,6 +2,8 @@
 const JWT = require('jsonwebtoken')
 const User = require('../models/user-model')
 
+const AWS = require('../config/s3_upload')
+
 function tokenGenerator(user){
   console.log(`${user.id} >> TOKEN`);
   return JWT.sign({
@@ -43,20 +45,27 @@ class UserControlador {
       if (exist) {
         return res.status(403).send(`Usuário ${doc.login} já existe.`);
       }
-      await User.create(doc)
-        .then((resp) => res.status(201).json(doc))
-        .catch((err) => {
-          console.log(err.message);
-          return res.status(400).send(err.message);
-        });
+      
+      await AWS.imageUpload(doc.avatar)
+        .then(async (location) => {
+          doc.avatar = location
+          await User.create(doc)
+            .then((resp) => res.status(201).json(doc))
+            .catch((err) => {
+              console.log(err.message);
+              return res.status(400).send(err.message);
+            });
+          })
     }
-    
   }
 
   remover(){
       return async (req, res) =>{
           const { id } = req.params;
           await User.findByIdAndDelete(id)
+            .then(async (doc)=>{
+              await AWS.deleteItems([doc.avatar])
+            })
             .catch((err) => {
               console.log(err.message);
               return res.status(400).send(err.message);

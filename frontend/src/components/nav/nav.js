@@ -15,6 +15,7 @@ export default class Nav extends Component {
                 <div className="userBar">
                     <span>{this.props.user.firstName}</span>
                     <img className="userImg" alt="" src={this.props.user.avatar || require('../../assets/img/Icon-User-2px.png')} />
+                    <img onClick={this.props.excludeUser} className="excludeImg" alt="" src={require('../../assets/img/Icon-Cancel-2px.png')} />
                     <img onClick={this.props.logOut} className="statusImg" alt="" src={require('../../assets/img/Icon-Unlocked-2px.png')} />
                 </div>
             </div>

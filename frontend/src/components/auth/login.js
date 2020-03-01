@@ -10,12 +10,14 @@ export default class Login extends Component {
       login: "",
       password: "",
       logedIn: false,
-      loginError: null
-
+      loginError: null,
+      cadastrar:false
     };
+
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.cadatroRedirect = this.cadatroRedirect.bind(this);
   }
 
   handleChange(event) {
@@ -52,17 +54,28 @@ export default class Login extends Component {
     event.preventDefault();
   }
 
+  cadatroRedirect(event){
+    this.setState({
+      cadastrar:true
+    })
+  }
+
+
   render() {
     if (this.state.logedIn) {
       return <Redirect to='/toolview' />
     }
+    if (this.state.cadastrar) {
+      return <Redirect to='/cadastro' />
+    }
+
     return (
       <div className='loginContainer'>
         <h1>VUTTR</h1>
         <h3>Very Useful Tools to Remember</h3>
         <form onSubmit={this.handleSubmit} className='loginForm'>
           <input
-            id="login"
+            id="loginUser"
             type="text"
             name="login"
             placeholder="login"
@@ -72,7 +85,7 @@ export default class Login extends Component {
           />
 
           <input
-            id="password"
+            id="loginPassword"
             type="password"
             name="password"
             placeholder="senha"
@@ -82,6 +95,7 @@ export default class Login extends Component {
           />
 
           <button id="submitButton" type="submit">Logar</button>
+          <button type="button"id="cadastrarButton" onClick={this.cadatroRedirect}>Cadastrar</button>
           {this.state.loginError}
         </form>
       </div>

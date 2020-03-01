@@ -1,0 +1,96 @@
+#loginErr{
+    color: red;
+    font-size: 10px;
+}
+
+#removeImg{
+    color: red;
+    margin: 0px 0px 5px 10px; 
+    cursor: pointer;   
+}
+
+
+.cadastroContainer{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #F5F4F6 0% 0% no-repeat padding-box;
+}
+
+.cadastroContainer h3{
+    letter-spacing: 0.84px;
+    color: #170C3A;
+    opacity: 1
+}
+
+.buttonDiv{
+    padding: 0px 0px 10px 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.cadastroForm{
+    background-color: #FFF;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 0px black;
+    margin-top: 20px;
+}
+
+.cadastroForm .inputField{
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.cadastroForm .inputField input{
+    height: 2em;
+}
+
+.cadastroForm .inputField label{
+    color: #000;
+    margin-bottom: 5px;
+}
+
+.cadastroForm #submitButton{
+    border: 0;
+    margin-top: 10px;
+    margin-right: 10px;
+    background: #0DCB7D 0% 0% no-repeat padding-box;
+    border-radius: 5px;
+    text-align: center;
+    letter-spacing: 0.36px;
+    color: #FFFFFF;
+    padding: 0px 20px;
+    opacity: 1;
+}
+
+.cadastroForm #submitButton:hover{
+    background: #10B26C 0% 0% no-repeat padding-box;
+    cursor: pointer;
+}
+
+.cadastroForm #cancelButton{
+    border: 0;
+    margin-top: 10px;
+    margin-right: 10px;
+    background: #F95E5A 0% 0% no-repeat padding-box;
+    border-radius: 5px;
+    text-align: center;
+    letter-spacing: 0.36px;
+    color: #FFFFFF;
+    padding: 0px 20px;
+    opacity: 1;
+    height: 25px;
+}
+
+.cadastroForm #cancelButton:hover{
+    background: #CC4C4C 0% 0% no-repeat padding-box;
+    cursor: pointer;
+}

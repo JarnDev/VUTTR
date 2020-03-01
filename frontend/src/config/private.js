@@ -1,5 +1,5 @@
 export const environment = {
 
-    API_URL: 'http://3.16.40.249:3000'
+    API_URL: 'http://localhost:3001'
 
 }

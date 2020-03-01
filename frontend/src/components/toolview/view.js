@@ -16,6 +16,7 @@ export default class ToolView extends Component {
       search: '',
       searchByTag: false,
       removeWarnModal: false,
+      excludeUserModal:false,
       addToolModal: false,
       modalTool: null
     };
@@ -29,6 +30,8 @@ export default class ToolView extends Component {
     this.logOut = this.logOut.bind(this)
     this.handleChangeDebounced = this.handleChangeDebounced.bind(this)
     this.debouncedSearchTerm = _.debounce(this.handleChange, 500)
+    this.excludeUserToggle = this.excludeUserToggle.bind(this)
+    this.excludeUser = this.excludeUser.bind(this)
   }
 
   async componentDidMount() {
@@ -119,6 +122,17 @@ export default class ToolView extends Component {
     })
   }
 
+  excludeUserToggle(){
+    this.setState({ excludeUserModal: !this.state.excludeUserModal })
+  }
+
+  async excludeUser(){
+    await backend.delete(`/user/${this.state.user._id}`,
+    { headers: { Authorization: sessionStorage.getItem('token') } })
+    this.excludeUserToggle()
+    this.logOut()
+  }
+
   render() {
     if (!sessionStorage.getItem('token')) {
       return <Redirect to='/' />
@@ -126,12 +140,14 @@ export default class ToolView extends Component {
     var modal = null;
     if (this.state.removeWarnModal) {
       modal = <Modal title={`${'\u2718'} Remove Tool`} modalButton={true} confirmText='Yes, remove' onConfirm={this.removeItem} onClose={this.removeWarnModalToggle} show={this.state.removeWarnModal}>Are you sure you want to remove {this.state.modalTool.title}?</Modal>
-    } else if (this.state.addToolModal) {
+    }else if(this.state.excludeUserModal){ 
+      modal = <Modal title={`${'\u2718'} Remove User`} modalButton={true} confirmText='Yes, Exclude' onConfirm={this.excludeUser} onClose={this.excludeUserToggle} show={this.state.excludeUserModal}>Are you sure you want to exclude account?</Modal>
+    }else if (this.state.addToolModal) {
       modal = <Modal title=' + Add new tool' onClose={this.addToolModalToggle} show={this.state.addToolModal}><AddToolForm onSubmit={this.handleAddSubmit} /></Modal>
     }
     var userBar = null
     if (this.state.user) {
-      userBar = <Nav logOut={this.logOut} user={this.state.user} />
+      userBar = <Nav logOut={this.logOut} excludeUser={this.excludeUserToggle} user={this.state.user} />
     }
 
     return (
