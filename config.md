@@ -29,7 +29,7 @@ Para que os projetos (backend e frontend) funcionem corretamente siga esse passo
     
         export const environment = {
 
-            API_URL: 'http://localhost:3001'
+            API_URL: 'http://localhost:3000' << URL do Backend
 
         }
     
