@@ -11,7 +11,7 @@ export default class Login extends Component {
       password: "",
       logedIn: false,
       loginError: null,
-      cadastrar:false
+      cadastrar: false
     };
 
 
@@ -54,15 +54,15 @@ export default class Login extends Component {
     event.preventDefault();
   }
 
-  cadatroRedirect(event){
+  cadatroRedirect(event) {
     this.setState({
-      cadastrar:true
+      cadastrar: true
     })
   }
 
 
   render() {
-    if (this.state.logedIn) {
+    if (this.state.logedIn || sessionStorage.getItem('token')) {
       return <Redirect to='/toolview' />
     }
     if (this.state.cadastrar) {
@@ -95,7 +95,7 @@ export default class Login extends Component {
           />
 
           <button id="submitButton" type="submit">Logar</button>
-          <button type="button"id="cadastrarButton" onClick={this.cadatroRedirect}>Cadastrar</button>
+          <button type="button" id="cadastrarButton" onClick={this.cadatroRedirect}>Cadastrar</button>
           {this.state.loginError}
         </form>
       </div>
