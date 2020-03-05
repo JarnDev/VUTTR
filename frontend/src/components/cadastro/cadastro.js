@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import { Redirect } from "react-router-dom"
 import backend from "../../services/backend_api";
+import fileToBase64 from "../../utils/asyncReadFile"
 import './cadastro.css'
 export default class Cadastro extends Component {
 
-    constructor(props){
+    constructor(props) {
         super(props)
 
         this.state = {
@@ -13,9 +14,9 @@ export default class Cadastro extends Component {
             login: '',
             password: '',
             avatar: '',
-            cancel:false,
-            blockLink:false,
-            loginExist:false
+            cancel: false,
+            blockLink: false,
+            loginExist: false
         }
 
         this.changeHandler = this.changeHandler.bind(this)
@@ -26,110 +27,72 @@ export default class Cadastro extends Component {
     }
 
     changeHandler(event) {
-        if(event.target.name === "avatar" && event.target.type === "file"){
-            if(event.target.files[0]){
+        if (event.target.name === "avatar" && event.target.type === "file") {
+            if (event.target.files[0]) {
                 this.setState({
                     [event.target.name]: event.target.files[0],
-                    blockLink:true
+                    blockLink: true
                 })
-            }else{
+            } else {
                 this.setState({
                     [event.target.name]: '',
-                    blockLink:false
+                    blockLink: false
                 })
             }
-        }else{
+        } else {
             this.setState({
                 [event.target.name]: event.target.value
             })
         }
     }
 
-    cancelHandler(){
+    cancelHandler() {
         this.setState({
-            cancel:true
+            cancel: true
         })
     }
 
-    setLoginExist(){
+    setLoginExist() {
         this.setState({
-            loginExist:true
+            loginExist: true
         })
     }
 
-    removeImg(){
-        this.setState({avatar:'',blockLink:false})
+    removeImg() {
+        this.setState({ avatar: '', blockLink: false })
     }
 
-    async submitHandler(event){
+    async submitHandler(event) {
         event.preventDefault()
-        if(typeof(this.state.avatar) === 'object'){
-            var reader = new FileReader();
-            reader.readAsDataURL(this.state.avatar);
-            reader.onload = async () => {
-                const payload = {
-                    firstName:this.state.firstName,
-                    lastName:this.state.lastName,
-                    login:this.state.login,
-                    password:this.state.password,
-                    avatar:reader.result
-                }
-                backend.post("/user/cadastrar", payload, {
-                    headers: { Authorization: sessionStorage.getItem('token') }
-                }).then(val => {
-                    // console.log(val)
-                    this.cancelHandler()
-                }).catch(err => {
-                    if(err.response.status === 403){
-                        this.setLoginExist()
-                    }
-                })
-            }
-        }else{
-            const payload = {
-                firstName:this.state.firstName,
-                lastName:this.state.lastName,
-                login:this.state.login,
-                password:this.state.password,
-                avatar:this.state.avatar
-            }
-            await backend.post("/user/cadastrar", payload, {
-                headers: { Authorization: sessionStorage.getItem('token') }
-            }).then(val => {
-                // console.log(val)
-                this.cancelHandler()
-            }).catch(err => {
-                if(err.response.status === 403){
-                    this.setLoginExist()
-                }
-            })
+        const payload = {
+            firstName: this.state.firstName,
+            lastName: this.state.lastName,
+            login: this.state.login,
+            password: this.state.password,
+            avatar: this.state.avatar
         }
-        
+
+        if (typeof (this.state.avatar) === 'object') {
+            payload['avatar'] = await fileToBase64(this.state.avatar)
+        }
+
+        backend.post("/user/cadastrar", payload, {
+            headers: { Authorization: sessionStorage.getItem('token') }
+        }).then(resp => {
+            this.cancelHandler()
+        }).catch(err => {
+            if (err.response.status === 403) {
+                this.setLoginExist()
+            }
+        })
+
     }
 
     render() {
-        if(this.state.cancel){
+        if (this.state.cancel) {
             return <Redirect to='/' />
         }
-        var avatarLink = null
-        var loginErr = null
-        if(!this.state.blockLink){
-            avatarLink = (
-                <div className="inputField">
-                        <label htmlFor="avatarLink">Avatar Link</label>
-                        <input type="text" name="avatar" id="avatarLink" value={this.state.avatar} onChange={this.changeHandler} />
-                </div>
-            )
-        }else{
-            avatarLink = (
-                <span id="removeImg" onClick={this.removeImg}>{'\u2718'} Remove Image</span>
-            )
-        }
-        if(this.state.loginExist){
-            loginErr = (
-                <label id="loginErr">(login existe)</label>
-            )
-        }
+
         return (
             <div className='cadastroContainer'>
                 <h3>CADASTRO</h3>
@@ -142,28 +105,42 @@ export default class Cadastro extends Component {
 
                     <div className="inputField">
                         <label htmlFor="lastName">Last Name</label>
-                        <input type="text" name="lastName" id="lastName" onChange={this.changeHandler}  required/>
+                        <input type="text" name="lastName" id="lastName" onChange={this.changeHandler} required />
                     </div>
 
                     <div className="inputField">
-                        <label htmlFor="login">Login {loginErr}</label>
-                        <input type="text" name="login" id="login" onChange={this.changeHandler}  required/>
+                        <label htmlFor="login">
+                            Login {this.state.loginExist && <label id="loginErr">Login já existe</label>}
+                        </label>
+                        <input type="text" name="login" id="login" onChange={this.changeHandler} required />
                     </div>
 
                     <div className="inputField">
                         <label htmlFor="password">Senha</label>
-                        <input type="password" name="password" id="password" onChange={this.changeHandler}  required/>
+                        <input type="password" name="password" id="password" onChange={this.changeHandler} required />
                     </div>
 
                     <div className="inputField">
                         <label htmlFor="avatar">Avatar</label>
-                        <input type="file" name="avatar" id="avatar" onChange={this.changeHandler} />
+                        <input type="file" name="avatar" id="avatar" onChange={this.changeHandler} accept="image/x-png,image/gif,image/jpeg" />
                     </div>
 
-                    {avatarLink}
+                    {this.state.blockLink ?
+
+                        <span id="removeImg" onClick={this.removeImg}>{'\u2718'} Remove Image</span>
+
+                        :
+
+                        <div className="inputField">
+                            <label htmlFor="avatarLink">Avatar Link</label>
+                            <input type="text" name="avatar" id="avatarLink" value={this.state.avatar} onChange={this.changeHandler} />
+                        </div>
+
+
+                    }
 
                     <div className="buttonDiv">
-                        <button type="button"id="cancelButton" onClick={this.cancelHandler}>Cancel</button>
+                        <button type="button" id="cancelButton" onClick={this.cancelHandler}>Cancel</button>
                         <button id="submitButton">Cadastrar</button>
                     </div>
 
