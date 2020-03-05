@@ -12,10 +12,11 @@
 
 .pageName{
     position: absolute;
-    left: 120px;
-    top: 30px;
+    left: 100px;
+    top: 33px;
     text-align: left;
-    font-weight: bold;
+    font-weight: bolder;
+    font-size: 12px;
     letter-spacing: 0.52px;
     color: #170C3A;
     opacity: 1;
