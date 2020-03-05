@@ -81,7 +81,7 @@ export default class Cadastro extends Component {
         }).then(resp => {
             this.cancelHandler()
         }).catch(err => {
-            if (err.response.status === 403) {
+            if (err.response && err.response.status === 403) {
                 this.setLoginExist()
             }
         })
