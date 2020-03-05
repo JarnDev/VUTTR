@@ -16,7 +16,6 @@ class ToolControler {
 
             db_response = await customRedis.get(req.query)
             if (!db_response) {
-                console.log("Not in Cache!") //for debug
                 if (req.query.hasOwnProperty('global')) {
                     if (req.query.global !== '') {
                         db_response = await Tools.aggregate([
@@ -41,8 +40,6 @@ class ToolControler {
                 }
 
                 customRedis.set(req.query, db_response)
-            } else {
-                console.log("In Cache!")
             }
 
 
