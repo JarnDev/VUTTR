@@ -39,6 +39,10 @@ Para que os projetos (backend e frontend) funcionem corretamente siga esse passo
 
         npm install
         
+    para utilizar o sistema de caching, instalar o redis e habilitar a porta 6379;
+    
+    caso o redis não esteja instalado tudo funcionará normalemente porem sem caching.
+    
 4. Rodas os projetos
 
     backend
