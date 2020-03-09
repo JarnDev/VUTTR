@@ -50,7 +50,7 @@ class UserControlador {
         .then(async (location) => {
           doc.avatar = location
           await User.create(doc)
-            .then((resp) => res.status(201).json(doc))
+            .then((resp) => res.status(201).json(resp))
             .catch((err) => {
               console.log(err.message);
               return res.status(400).send(err.message);
