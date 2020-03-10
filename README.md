@@ -14,4 +14,3 @@ SWAGGER DOC: [LINK](https://app.swaggerhub.com/apis/Jarn40/vuttr-api/1.0)
 
 
 ![BOSSA](https://user-images.githubusercontent.com/20113585/75614347-87902380-5b16-11ea-9ec7-d42858173818.png)
-
