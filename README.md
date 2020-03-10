@@ -1,3 +1,4 @@
+![Node.js CI](https://github.com/Jarn40/VUTTR/workflows/Node.js%20CI/badge.svg)
 # VUTTR
 Very Useful Tools to Remember Project
 

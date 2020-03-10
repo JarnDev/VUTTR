@@ -1,0 +1,44 @@
+# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+
+name: Node.js CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    
+    - run: npm ci
+      working-directory: ./backend
+      
+    - run: wget --no-check-certificate "https://docs.google.com/uc?export=download&id=1hZ12RLUVdArdYoOwmik7oAKY0hnogc3E" -O private.json
+      working-directory: ./backend/src/config
+      
+    - run: wget --no-check-certificate "https://docs.google.com/uc?export=download&id=1N_N38dWM1ji7AWGGdX7enAlRTvkwuAHm" -O s3_config.json
+      working-directory: ./backend/src/config
+      
+    - run: npm test
+      working-directory: ./backend
+      env:
+        CI: true
+    
+    - name: Invoke deployment hook
+      uses: distributhor/workflow-webhook@v1
+      env:
+          webhook_url: ${{ secrets.WEBHOOK_URL }}
+          webhook_secret: ${{ secrets.WEBHOOK_SECRET }}
