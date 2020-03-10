@@ -13,7 +13,7 @@ describe('user-controller', ()=>{
         const res = await request(app)
         .post('/user/logar')
         .send({})
-        expect(res.statusCode).toBe(400)
+        expect(res.statusCode).toBe(500)
         done()
     })
 
