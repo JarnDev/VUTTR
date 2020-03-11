@@ -72,7 +72,7 @@ export default class Login extends Component {
     return (
       <div className='loginContainer'>
         <h1>VUTTR</h1>
-        <h3>Very Useful Tools to Remember</h3>
+        <h3>Very Useful Tools to Remember (test)</h3>
         <form onSubmit={this.handleSubmit} className='loginForm'>
           <input
             id="loginUser"
