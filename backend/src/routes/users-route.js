@@ -19,4 +19,3 @@ router.route(userRotas.userId)
 
 
 module.exports = router
-
