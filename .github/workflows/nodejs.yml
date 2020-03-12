@@ -31,8 +31,15 @@ jobs:
       
     - run: wget --no-check-certificate "https://docs.google.com/uc?export=download&id=1N_N38dWM1ji7AWGGdX7enAlRTvkwuAHm" -O s3_config.json
       working-directory: ./backend/src/config
+          
+    - run: npm test
+      name: Test Frontend
+      working-directory: ./frontend
+      env:
+        CI: true
       
     - run: npm test
+      name: Test Backend
       working-directory: ./backend
       env:
         CI: true
