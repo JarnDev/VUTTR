@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/Jarn40/VUTTR#readme",
   "dependencies": {
-    "aws-sdk": "^2.630.0",
+    "aws-sdk": "^2.814.0",
     "bcrypt": "^3.0.8",
     "cors": "^2.8.5",
     "express": "^4.17.1",
